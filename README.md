@@ -121,10 +121,10 @@ module virtualMachineAde 'br/public:avm/res/compute/virtual-machine:0.11.1' = {
 }
 ```
 
-### Differences in Resource Properties
+### Deployment specifics
 
-- **Key Vault**: `enablePurgeProtection` and `enableSoftDelete` are set to `false` for ADE.
-- **Virtual Machine**: `encryptionAtHost` is set to `false` for ADE.
+- **Key Vault**: `enablePurgeProtection` and `enableSoftDelete` can be set to `false` for ADE.
+- **Virtual Machine**: `encryptionAtHost` is set to `false` and is not compatible for ADE.
 - **Azure Disk Encryption Configuration**: The `extensionAzureDiskEncryptionConfig` property is used to configure ADE, the code block below describes the required configuration.
 
 ```bicep
@@ -274,10 +274,10 @@ module virtualMachineEahCmk 'br/public:avm/res/compute/virtual-machine:0.11.1' =
 }
 
 ```
-### Differences in Resource Properties
+### Deployment Specifics
 
 - **Managed Identity**: Required for the Disk encryption set to access the keyvault key. 
-- **Key Vault**: `enablePurgeProtection` and `enableSoftDelete` are set to `true` for SSE with CMK, whereas they are set to `false` for ADE.
+- **Key Vault**: `enablePurgeProtection` and `enableSoftDelete` are set to `true` for SSE with CMK, whereas they can be set to `false` for ADE.
 - **Virtual Machine**:
   - **Encryption at Host**: `encryptionAtHost` is set to `true` for SSE with CMK, while it is set to `false` for ADE.
   - **Disk Encryption Configuration**: For ADE, the `extensionAzureDiskEncryptionConfig` property is used to configure ADE, whereas for SSE with CMK, the `diskEncryptionSetResourceId` property is used to reference the Disk Encryption Set. The required configuration can be seen below code block.
