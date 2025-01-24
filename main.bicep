@@ -1,12 +1,15 @@
-// The purpose of this is to demonstrate how to deploy Azure Disk Encryption with Customer Managed Key (CMK) 
-// and Server Side Encryption (SSE) with CMK using Bicep.
+metadata title = 'Virtual Machine Azure Disk Encryption options'
+metadata description = 'Virtual Machine Azure Disk Encryption (ADE) and Server Side Encryption (SSE) with Customer Managed Key (CMK)'
 
 targetScope = 'subscription'
 
+// Required parameters
 @description('Required. Location for all resources.')
 param location string = '<location>'
 @description('Required. Existing Subnet ID for the VMs')
 param subnetId string = '<subnetResourceId>'
+
+// Optional parameters
 @description('Optional. Admin password for the VMs')
 @secure()
 param adminPassword string = newGuid()
