@@ -8,7 +8,7 @@ Azure Disk Encryption helps protect and safeguard your data to meet your organiz
 
 ### Paramters used
 
-```arm
+```bicep
 @description('Required. Location for all resources.')
 param location string = '<location>'
 @description('Required. Existing Subnet ID for the VMs')
@@ -26,7 +26,7 @@ param keyName string = 'encryptKey'
 
 ### Code Example
 
-```arm
+```bicep
 targetScope = 'subscription'
 
 // Azure Disk encryption with CMK
@@ -127,7 +127,7 @@ module virtualMachineAde 'br/public:avm/res/compute/virtual-machine:0.11.1' = {
 - **Virtual Machine**: `encryptionAtHost` is set to `false` for ADE.
 - **Azure Disk Encryption Configuration**: The `extensionAzureDiskEncryptionConfig` property is used to configure ADE, the code block below describes the required configuration.
 
-```arm
+```bicep
     // Encryption at host is not supported for VMs with ADE
     encryptionAtHost: false
     // Azure Disk Encryption configuration
@@ -155,7 +155,7 @@ Server-Side Encryption (SSE) with encryption at host ensures that all temp disks
 
 ### Code Example
 
-```arm
+```bicep
 // SSE Disk Encryption Set with CMK
 
 @description('VM deployment resource group for SSE with CMK')
@@ -282,7 +282,7 @@ module virtualMachineEahCmk 'br/public:avm/res/compute/virtual-machine:0.11.1' =
   - **Encryption at Host**: `encryptionAtHost` is set to `true` for SSE with CMK, while it is set to `false` for ADE.
   - **Disk Encryption Configuration**: For ADE, the `extensionAzureDiskEncryptionConfig` property is used to configure ADE, whereas for SSE with CMK, the `diskEncryptionSetResourceId` property is used to reference the Disk Encryption Set. The required configuration can be seen below code block.
 
-```arm
+```bicep
     // Encryption at host is supported for VMs with SSE with CMK or PMK
     encryptionAtHost: true
     osDisk: {
