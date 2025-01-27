@@ -274,6 +274,7 @@ module virtualMachineEahCmk 'br/public:avm/res/compute/virtual-machine:0.11.1' =
 }
 
 ```
+
 ### Deployment Specifics
 
 - **Managed Identity**: Required for the Disk encryption set to access the keyvault key. 
@@ -293,8 +294,7 @@ module virtualMachineEahCmk 'br/public:avm/res/compute/virtual-machine:0.11.1' =
         diskEncryptionSetResourceId: diskEncryptionSet.outputs.resourceId
       }
     }
-``` 
-
+```
 
 ## Summary
 
